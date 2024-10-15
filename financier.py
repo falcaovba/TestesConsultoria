@@ -4,11 +4,8 @@ import pandas as pd
 # Importar o módulo que contém a classe
 from fonctions import FormularioContasAPagar
 
-from pymongo import ReturnDocument
-
 # Conexão com Banco ---------------------------------------------------------------
-client = MongoClient('mongodb://192.168.1.15:27017/')
-#client = MongoClient('mongodb://localhost:27017/')
+client = MongoClient('mongodb://localhost:27017/')
 db = client['ambassador']
 # CONTAS A PAGAR ------------------------------------------------------------------
 collection_cap = db['comptespayer']
@@ -32,7 +29,6 @@ st.set_page_config(page_title='Condomínio Ambassador', page_icon='🪙', layout
 
 st.header("🪙 Financeiro Condomínio Ambassador", divider="rainbow")
 st.subheader("Contas a Pagar")
-
 
 
 filtro1, col1, col2, col3 = st.columns(4)
