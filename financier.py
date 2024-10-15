@@ -7,7 +7,7 @@ from fonctions import FormularioContasAPagar
 from pymongo import ReturnDocument
 
 # Conexão com Banco ---------------------------------------------------------------
-client = MongoClient('mongodb://192.168.1.15:27017/')
+#client = MongoClient('mongodb://192.168.1.15:27017/')
 #client = MongoClient('mongodb://localhost:27017/')
 db = client['ambassador']
 # CONTAS A PAGAR ------------------------------------------------------------------
