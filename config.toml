@@ -1,0 +1,15 @@
+[theme]
+base="light"
+primaryColor="#C33B28"
+backgroundColor="#212750"
+secondaryBackgroundColor="#1a1a3d"
+textColor="#f8f8f2"
+
+[layout]
+wideMode = true
+
+[server]
+runOnSave = true
+
+[runner]
+fastReruns = true
