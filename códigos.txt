@@ -1,0 +1,48 @@
+# Exibindo os dados no Data Editor para edição da coluna 'Status'
+df_editado = st.data_editor(df_cap, num_rows="dynamic")
+
+# Botão para enviar as alterações para o MongoDB
+if st.button("♻️ Atualizar Status"):
+    # Iterar sobre o DataFrame editado e atualizar o MongoDB
+    for index, row in df_editado.iterrows():
+        novo_status = row['Status']
+        _id = df_cap.loc[index, '_id']  # Supondo que você tenha uma coluna '_id' como chave primária
+
+        # Atualizar o campo 'Status' no MongoDB
+        collection_cap.update_one({'_id': _id}, {'$set': {'Status': novo_status}})
+
+
+ideias boa de markdown
+  st.markdown("<h3 style='font-size:17px;'>🔍<b>Filtros</b></h3>", unsafe_allow_html=True) 
+
+  st.markdown("""
+    <h3 style='font-size:16px;'>🔍<b>Filtros</b></h3>
+    <hr style="border: 1px solid #FF5733;">
+""", unsafe_allow_html=True)
+
+
+
+
+[runner]
+fastReruns = true
+
+
+[theme]
+base="ligth"
+primaryColor = "#FF4B4B"
+backgroundColor="#020f35"
+secondaryBackgroundColor="#1b1c35"
+textColor = "#FAFAFA"
+font = "sans serif"
+
+
+---------------------------------------------
+
+[theme]
+primaryColor="#5681d0"
+backgroundColor="#212750"
+secondaryBackgroundColor="#1a1a3d"
+textColor="#f8f8f2"
+
+[server]
+runOnSave = true

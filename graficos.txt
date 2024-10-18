@@ -1,0 +1,47 @@
+      
+      GRÁFICO VERTICAL BARRAS --------------------------------------------------------------------------------------------------
+      
+        # Exibir o gráfico em um bloco seguro no Streamlit
+        with st.container(border=True):
+            st.markdown("📶 Comparativo de Métodos de Pagamento")
+
+            # Criar gráfico de barras
+            grafico = alt.Chart(df_agg_tipoPgto_res).mark_bar().encode(
+                x=alt.X('TipoPagamento', sort=None, title=''),
+                y=alt.Y('Valor', title='Valor em R$'),
+                color='TipoPagamento'
+            ).properties(
+                width=600,
+                height=400,
+            )
+            text = grafico.mark_text(align='center', baseline='middle',dy=-15,  # deslocamento vertical para cima
+                                    color='white', size=15  # cor dos rótulos de dados
+                                     ).encode(text='Valor:Q',x='TipoPagamento:O',y='Valor:Q')
+
+            # Exibir gráfico no Streamlit
+            st.altair_chart(grafico + text, use_container_width=True)
+
+    GRÁFICO HORIZONTAL - BARRAS ----------------------------------------------------------------------------------------------------
+
+            with st.container(border=True):
+            st.markdown("📶 Comparativo de Métodos de Pagamento")
+
+            # Criar gráfico de barras horizontais
+            grafico = alt.Chart(df_agg_tipoPgto_res).mark_bar().encode(
+                y=alt.Y('TipoPagamento', sort=None, title=''),  # Mover TipoPagamento para o eixo y
+                x=alt.X('Valor', title='Valor em R$'),  # Mover Valor para o eixo x
+                color=alt.Color('TipoPagamento', legend=None)  # Remover a legenda
+            ).properties(
+                width=670,
+                height=200,
+            )
+            # Adicionar rótulos de dados
+            text = grafico.mark_text(
+                align='left',  # Alinhar o texto à esquerda
+                baseline='middle',
+                dx=3,  # Deslocamento horizontal para evitar sobreposição
+                color='black', 
+                size=12
+            ).encode(text='Valor:Q')
+            # Exibir gráfico no Streamlit
+            st.altair_chart(grafico + text, use_container_width=True)
